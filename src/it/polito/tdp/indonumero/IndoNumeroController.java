@@ -51,13 +51,13 @@ public class IndoNumeroController {
     void handleNuava(ActionEvent event) {
     	
     	
-    	this.segreto = (int) (Math.random()*NMAX); //Risultato:mi da un valore compreso tra [0,100)
+    	this.segreto = (int) (Math.random()*NMAX)+1; //Risultato:mi da un valore compreso tra [0,100)
         
     	this.tentativi = 0;
     	this.inGame = true ;
     	
-    	btnNuava.setDisable(true); // Abilatare
-    	boxGioco.setDisable(false); // Disabilitare
+    	btnNuava.setDisable(true); // Disabilitare
+    	boxGioco.setDisable(false); // Abilatare
     	txtCurr.setText(String.format("%d", this.tentativi));
     	txtMax.setText(String.format("%d", this.TMAX));
     	txtLog.clear();
@@ -90,8 +90,9 @@ public class IndoNumeroController {
     			 txtLog.appendText("Hai vinto!\n");
     			 
     			 // "chuidi" la partita
-    			 boxGioco.setDisable(true);
-    			 btnNuava.setDisable(false);
+    			
+    			 btnNuava.setDisable(false); // redisabilitare
+    			 boxGioco.setDisable(true);// Reabilitare
     			 this.inGame = false ;
     		 } else {
     			 // tentativo errato 
@@ -104,8 +105,8 @@ public class IndoNumeroController {
     						 String.format("Hai perso! Il numero era: %d\n",
     								 this.segreto));
     				// "chuidi" la partita
+    				 btnNuava.setDisable(false);
         			 boxGioco.setDisable(true);
-        			 btnNuava.setDisable(false);
         			 this.inGame = false ;
     			 } else {
     				 // sono ancora in gioco
