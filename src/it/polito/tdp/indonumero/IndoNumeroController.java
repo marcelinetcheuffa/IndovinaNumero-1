@@ -90,6 +90,7 @@ public class IndoNumeroController {
 				 
     		 }
     		 
+    		 
     		 if(!model.isInGame()) {
     			 // la partita è finita
     			 if(risultato!=0){
