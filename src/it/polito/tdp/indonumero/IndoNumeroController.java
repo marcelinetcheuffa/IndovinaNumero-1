@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.util.converter.NumberStringConverter;
 
 public class IndoNumeroController {
 	
@@ -75,7 +76,7 @@ public class IndoNumeroController {
     			 return;
     		 }
     		 int risultato = model.tentativo(num) ;
-    	     txtCurr.setText(String.format("%d", model.getTentativi()));
+    	    // txtCurr.setText(String.format("%d", model.getTentativi()));
 
     		 
     		 if(risultato == 0){
@@ -128,6 +129,8 @@ public class IndoNumeroController {
 
 	public void setModel(Model model) {
 		this.model = model;
+		
+		txtCurr.textProperty().bindBidirectional(model.tentativiProperty(), new NumberStringConverter());
 	}
 
 
